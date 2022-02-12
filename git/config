@@ -1,0 +1,10 @@
+[init]
+    defaultBranch = main
+[status]
+    short = true
+    branch = true
+[includeIf "gitdir:~/repos/dots/"]
+    path = ~/repos/dots/.gitconfig
+[user]
+	email = henriqueborgeshbr@gmail.com
+	name = Henrique Borges
