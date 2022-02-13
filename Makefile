@@ -9,7 +9,8 @@ build-fish: clean-fish
 run-fish:
 	docker run \
 		-v $(HOME)/.local/bin:/root/.local/bin \
-		-v $(HOME)/repos:/root/repos \
+		-v $(PWD)/fish/:/root/repos/fish \
+		-v $(PWD)/git/:/root/repos/git \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		--rm \
 		-it \

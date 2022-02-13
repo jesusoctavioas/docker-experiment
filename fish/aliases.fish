@@ -22,3 +22,10 @@ end
 alias pacup "doas pacman -Syyu"
 alias paccl "doas pacman -Rns (pacman -Qqdt)"
 alias pacmirror "doas reflector --sort age -c Brazil --save /etc/pacman.d/mirrorlist"
+
+set containerized_tools (find $HOME/repos -mindepth 1 -maxdepth 1 -not -path "*/.*" -type d -exec basename {} \;)
+
+# these aliases are required for running containerized tools just specifying their names
+for tool in $containerized_tools;
+  alias $tool "docker run --rm --volumes-from \$HOSTNAME $tool"
+end
