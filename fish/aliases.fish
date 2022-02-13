@@ -27,5 +27,5 @@ set containerized_tools (find $HOME/repos -mindepth 1 -maxdepth 1 -not -path "*/
 
 # these aliases are required for running containerized tools just specifying their names
 for tool in $containerized_tools;
-  alias $tool "docker run --rm --volumes-from \$HOSTNAME $tool"
+  alias $tool "docker run --rm -w \$PWD --volumes-from \$HOSTNAME $tool"
 end
