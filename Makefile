@@ -1,3 +1,6 @@
+volumes = $(PWD)/fish/:/home/fish/repos/fish
+volumes += $(PWD)/git/:/home/fish/repos/git
+
 # fish
 
 clean-fish:
@@ -12,6 +15,7 @@ build-fish: clean-fish
 
 run-fish:
 	docker run \
+		-e VOLUMES="$(foreach volume,$(volumes),-v $(volume))" \
 		-v $(PWD)/fish/:/home/fish/repos/fish \
 		-v $(PWD)/git/:/home/fish/repos/git \
 		-v /var/run/docker.sock:/var/run/docker.sock \
