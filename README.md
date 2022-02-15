@@ -13,7 +13,7 @@ environment using only Docker containers
 - Removes the need of installing software on your host machine
 - Keeps your filesystem clean from dozens of configuration files for each tool
 that you use
-- Run untrusted software on a sandboxed environment
+- Allows running untrusted software on a sandboxed environment
 
 ### FAQ
 
