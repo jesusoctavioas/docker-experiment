@@ -12,4 +12,6 @@ RUN apk add --no-cache fish docker && \
 
 USER fish
 
+WORKDIR /home/fish
+
 ENTRYPOINT ["fish"]
