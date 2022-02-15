@@ -1,6 +1,6 @@
 FROM alpine:3.15
 
-COPY . /root/.config/git
+COPY . /etc
 
 RUN apk add --no-cache git
 
