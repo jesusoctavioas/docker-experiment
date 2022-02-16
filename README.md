@@ -9,7 +9,7 @@ container
 - [Why?](#why)
 - [How?](#how)
 - [FAQ](#faq)
-  - [Doesn't exposing the host docker socket to a container opens a security vulnerability](#doesnt-exposing-the-host-docker-socket-to-a-container-opens-a-security-vulnerability)
+  - [Doesn't exposing the host docker socket to a container opens a security vulnerability?](#doesnt-exposing-the-host-docker-socket-to-a-container-opens-a-security-vulnerability)
 - [Known bugs](#known-bugs)
 - [Roadmap](#roadmap)
 
