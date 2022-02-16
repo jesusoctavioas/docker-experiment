@@ -36,3 +36,31 @@ build-git: clean-git
 
 run-git:
 	docker run --rm git --version
+
+# node
+
+clean-node:
+	docker rmi -f node
+
+build-node: clean-node
+	docker build \
+		-t node \
+		--build-arg HOST_USER_ID=$$(id --user) \
+		node
+
+run-node:
+	docker run --rm node --version
+
+# npm
+
+clean-npm:
+	docker rmi -f npm
+
+build-npm: clean-npm
+	docker build \
+		-t npm \
+		--build-arg HOST_USER_ID=$$(id --user) \
+		npm
+
+run-npm:
+	docker run --rm npm --version
