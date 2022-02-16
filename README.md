@@ -17,8 +17,7 @@ that you use
 
 ### FAQ
 
-#### Doesn't exposing the host docker socket to a container opens a security
-vulnerability
+#### Doesn't exposing the host docker socket to a container opens a security vulnerability
 
 Yes, but the sibling containers will run with a non-root user, hence, they won't
 have permission to interact with the host Docker daemon
