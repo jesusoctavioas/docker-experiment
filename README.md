@@ -36,6 +36,9 @@ To get started, build the `fish` image with the command below:
 make build-fish
 ```
 
+> Optionally, you can also build the container image for tools that you would
+like to use inside the container
+
 Then, start it's container by running:
 
 ```shell
