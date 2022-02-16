@@ -15,6 +15,25 @@ environment using only Docker containers
 that you use
 - Allows running untrusted software on a sandboxed environment
 
+### How?
+
+> The instructions below assume that you already have both `docker` and `make`
+installed on your machine
+
+To get started, build the `fish` image with the command below:
+
+```shell
+make build-fish
+```
+
+Then, start it's container by running:
+
+```shell
+make run-fish
+```
+
+Now you can use all the other tools available inside the container
+
 ### FAQ
 
 #### Doesn't exposing the host docker socket to a container opens a security vulnerability
