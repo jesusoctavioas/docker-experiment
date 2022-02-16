@@ -10,6 +10,8 @@ container
 - [How?](#how)
 - [FAQ](#faq)
   - [Doesn't exposing the host docker socket to a container opens a security vulnerability](#doesnt-exposing-the-host-docker-socket-to-a-container-opens-a-security-vulnerability)
+- [Known bugs](#known-bugs)
+- [Roadmap](#roadmap)
 
 ### What?
 
@@ -52,3 +54,11 @@ have permission to interact with the host Docker daemon
 Even though the main container (fish) has such permission, everything is
 meant to be executed through unprivilleged containers, making such exploit
 uneffective
+
+### Known bugs
+
+- Auto-completion is not working well with fish, i think it has something to do with the fact that completions are on a separated container and need to be mounted
+
+### Roadmap
+
+- Add support for graphical applications (both X11 and Wayland)
