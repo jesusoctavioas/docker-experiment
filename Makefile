@@ -1,5 +1,5 @@
-volumes = $(PWD)/fish/:/home/fish/repos/fish
-volumes += $(PWD)/git/:/home/fish/repos/git
+containers = $(shell find . -mindepth 1 -maxdepth 1 -not -path "*/.*" -type d -exec basename {} \;)
+volumes = $(HOME):/host-files
 
 # fish
 
@@ -15,9 +15,9 @@ build-fish: clean-fish
 
 run-fish:
 	docker run \
+		-e CONTAINERS="$(containers)" \
 		-e VOLUMES="$(foreach volume,$(volumes),-v $(volume))" \
-		-v $(PWD)/fish/:/home/fish/repos/fish \
-		-v $(PWD)/git/:/home/fish/repos/git \
+		-v $(volumes) \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		--rm \
 		-it \

@@ -1,9 +1,9 @@
-set containerized_tools (find $HOME/repos -mindepth 1 -maxdepth 1 -not -path "*/.*" -type d -exec basename {} \;)
+set CONTAINERS (string split ' ' $CONTAINERS)
 
 # these aliases are required for running containerized tools just specifying their names
-for tool in $containerized_tools;
+for container in $CONTAINERS;
   # $VOLUMES contains all the parent container volumes (without the docker socket)
-  alias $tool "docker run --rm -w \$PWD $VOLUMES $tool"
+  alias $container "docker run --rm -w \$PWD $VOLUMES $container"
 end
 
 alias dots "git --git-dir=$HOME/repos/dots/.git --work-tree=$HOME/repos/dots"
