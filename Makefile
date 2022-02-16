@@ -35,6 +35,4 @@ build-git: clean-git
 		git
 
 run-git:
-	docker run \
-		--rm \
-		git log --oneline
+	docker run --rm git --version
