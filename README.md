@@ -3,6 +3,14 @@
 > Encapsulating (almost) every single software on my computer in a Docker
 container
 
+### Summary
+
+- [What?](#what)
+- [Why?](#why)
+- [How?](#how)
+- [FAQ](#faq)
+  - [Doesn't exposing the host docker socket to a container opens a security vulnerability](#doesnt-exposing-the-host-docker-socket-to-a-container-opens-a-security-vulnerability)
+
 ### What?
 
 This is a on-going experiment that tries to create a totally modular development
