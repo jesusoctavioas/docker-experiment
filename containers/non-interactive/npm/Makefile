@@ -5,7 +5,7 @@ build-npm: clean-npm
 	docker build \
 		-t npm \
 		--build-arg HOST_USER_ID=$$(id --user) \
-		npm
+		containers/non-interactive/npm
 
 run-npm:
 	docker run --rm npm --version

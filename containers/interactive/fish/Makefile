@@ -1,4 +1,4 @@
-containers = $(shell find . -mindepth 1 -maxdepth 1 -not -path "*/.*" -type d -exec basename {} \;)
+containers = $(shell find ./containers/** -mindepth 1 -type d)
 volumes = $(HOME):/host-files
 
 clean-fish:
@@ -9,7 +9,7 @@ build-fish: clean-fish
 		--build-arg HOST_USER_ID=$$(id --user) \
 		--build-arg DOCKER_GROUP_ID=$$(stat -c '%g' /var/run/docker.sock) \
 		-t fish \
-		fish
+		containers/interactive/fish
 
 run-fish:
 	docker run \
