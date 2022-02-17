@@ -5,7 +5,7 @@ build-node: clean-node
 	docker build \
 		-t node \
 		--build-arg HOST_USER_ID=$$(id --user) \
-		containers/non-interactive/node
+		containers/interactive/node
 
 run-node:
 	docker run --rm node --version
