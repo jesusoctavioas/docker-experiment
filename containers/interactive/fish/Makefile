@@ -13,6 +13,7 @@ build-fish: clean-fish
 
 run-fish:
 	docker run \
+		-e XAUTHORITY="$(XAUTHORITY)" \
 		-e DISPLAY="$(DISPLAY)" \
 		-e CONTAINERS="$(containers)" \
 		-e VOLUMES="$(foreach volume,$(volumes),-v $(volume))" \
