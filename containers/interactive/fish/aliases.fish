@@ -9,8 +9,13 @@ for container in $CONTAINERS;
   set container_parent_directory (dirname "$container")
   set container_type (basename "$container_parent_directory")
 
-  if test "$container_type" = "interactive"
-    set container_alias_flags "$container_alias_flags -it"
+  switch "$container_type"
+    case interactive
+      # run on interactive mode
+      set -a container_alias_flags "-it"
+    case graphical
+      # run on interactive mode on the background, and share the host X11 socket with the container
+      set -a container_alias_flags "-it -v /tmp/.X11-unix:/tmp/.X11-unix -d"
   end
 
   # $VOLUMES contains all the parent container volumes (without the docker socket)
