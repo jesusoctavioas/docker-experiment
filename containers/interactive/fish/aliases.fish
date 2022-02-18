@@ -15,7 +15,7 @@ for container in $CONTAINERS;
       set -a container_alias_flags "-it"
     case graphical
       # run on interactive mode on the background, and share the host X11 socket with the container
-      set -a container_alias_flags "-it -v /tmp/.X11-unix:/tmp/.X11-unix -d"
+      set -a container_alias_flags "-it -e DISPLAY=\$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -d"
   end
 
   # $VOLUMES contains all the parent container volumes (without the docker socket)
