@@ -61,7 +61,3 @@ uneffective
 ### Known bugs
 
 - Auto-completion is not working well with fish, i think it has something to do with the fact that completions are on a separated container and need to be mounted
-
-### Roadmap
-
-- Add support for graphical applications (both X11 and Wayland)
