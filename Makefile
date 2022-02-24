@@ -6,5 +6,6 @@ include containers/interactive/nvim/Makefile
 include containers/interactive/node/Makefile
 include containers/graphical/dwm/Makefile
 include containers/graphical/firefox/Makefile
+include containers/graphical/st/Makefile
 include containers/non-interactive/git/Makefile
 include containers/non-interactive/npm/Makefile

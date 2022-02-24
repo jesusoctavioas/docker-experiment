@@ -6,7 +6,6 @@ clean-fish:
 
 build-fish: clean-fish
 	docker build \
-		--build-arg HOST_USER_ID=$$(id --user) \
 		--build-arg DOCKER_GROUP_ID=$$(stat -c '%g' /var/run/docker.sock) \
 		-t fish \
 		containers/interactive/fish

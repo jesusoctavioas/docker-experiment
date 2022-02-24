@@ -4,7 +4,7 @@ set CONTAINERS (string split ' ' $CONTAINERS)
 # these aliases are required for running containerized tools just specifying their names
 for container in $CONTAINERS;
   set container_name (basename "$container")
-  set container_alias_flags "--rm -w \$PWD $VOLUMES"
+  set container_alias_flags "--rm $VOLUMES"
 
   set container_parent_directory (dirname "$container")
   set container_type (basename "$container_parent_directory")
@@ -12,10 +12,12 @@ for container in $CONTAINERS;
   switch "$container_type"
     case interactive
       # run on interactive mode
-      set -a container_alias_flags "-it"
+      set -a container_alias_flags "-it -w \$PWD"
     case graphical
-      # run on interactive mode on the background, and share the host X11 socket with the container
-      set -a container_alias_flags "-it --net=host -e DISPLAY=\$DISPLAY -v \$XAUTHORITY:/.Xauthority -v /tmp/.X11-unix:/tmp/.X11-unix -d"
+      # pass the XAUTHORITY here so it doesn't need to be defined on every container
+      set -a container_alias_flags "-it --net=host -v x11-shared:/tmp/.X11-unix -e DISPLAY=\$DISPLAY -e XAUTHORITY=/tmp/.X11-unix/container-cookie -d"
+    case '*'
+      set -a container_alias_flags "-w \$PWD"
   end
 
   # $VOLUMES contains all the parent container volumes (without the docker socket)
