@@ -2,8 +2,8 @@ FROM alpine:3.15
 
 ARG DOCKER_GROUP_ID
 
-COPY config.fish /etc/fish/conf.d
-COPY variables.fish /etc/fish/conf.d
+COPY config.fish /etc/fish/conf.d/
+COPY variables.fish /etc/fish/conf.d/
 
 RUN apk add --no-cache fish xauth docker && \
     adduser -S -s /usr/bin/fish fish && \
