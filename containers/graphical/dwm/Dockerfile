@@ -2,11 +2,10 @@ FROM alpine:3.15
 
 ARG DOCKER_GROUP_ID
 
-ENV ENV /home/dwm/.profile
-
 WORKDIR /home/dwm
 
-COPY .profile .
+COPY generate-x11-cookie /usr/local/bin
+COPY scripts/. /usr/local/bin
 COPY run /usr/local/bin
 
 RUN apk add --no-cache xauth xinit xorg-server xf86-video-fbdev xf86-video-vesa xf86-input-libinput dwm docker && \

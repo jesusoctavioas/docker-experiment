@@ -1,0 +1,3 @@
+#!/bin/sh
+generate-x11-cookie
+docker run -v /var/run/docker.sock:/var/run/docker.sock --rm -it --net=host -v x11-shared:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e XAUTHORITY=/tmp/.X11-unix/container-cookie -d st
