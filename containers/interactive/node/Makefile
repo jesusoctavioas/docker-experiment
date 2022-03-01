@@ -8,4 +8,4 @@ build-node: clean-node
 		containers/interactive/node
 
 run-node:
-	docker run --rm node --version
+	docker run --rm -i node
