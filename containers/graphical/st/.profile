@@ -1,7 +1,1 @@
-exec docker run \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  -v pandora:/tmp/.X11-unix \
-  -e DISPLAY="$DISPLAY" \
-  --rm \
-  -it \
-  fish
+exec ssh -q -t client@172.17.0.2 fish

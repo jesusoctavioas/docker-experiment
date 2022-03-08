@@ -1,0 +1,2 @@
+#!/bin/sh
+docker run  --rm -it -v x11-shared:/tmp/.X11-unix -e DISPLAY=:1 -e XAUTHORITY=/tmp/.X11-unix/container-cookie firefox $@

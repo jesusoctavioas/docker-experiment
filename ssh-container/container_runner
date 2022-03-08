@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# intercept commands sent to SSH server and avoid running anything else than containers
+# TODO: research about SSH ForceCommand
+
+command="$(echo $@ | cut -d \  -f 2-)"
+
+/usr/local/bin/$SSH_ORIGINAL_COMMAND

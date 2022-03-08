@@ -1,19 +1,16 @@
 FROM alpine:3.15
 
-ARG DOCKER_GROUP_ID
-
 WORKDIR /home/dwm
 
-COPY generate-x11-cookie /usr/local/bin
-COPY scripts/. /usr/local/bin
-COPY run /usr/local/bin
+COPY generate-x11-cookie run scripts/. /usr/local/bin/
 
-RUN apk add --no-cache xauth xinit xorg-server xf86-video-fbdev xf86-video-vesa xf86-input-libinput dwm docker && \
-    echo "allowed_users=anybody" > /etc/X11/Xwrapper.config && \
-    echo "needs_root_rights=yes" >> /etc/X11/Xwrapper.config && \
+RUN apk add --no-cache xinit xorg-server xf86-video-fbdev xf86-video-vesa xf86-input-libinput dwm openssh && \
     adduser -S dwm -s /bin/sh && \
-    addgroup -S -g $DOCKER_GROUP_ID dwm && \
+    addgroup -S dwm && \
     addgroup dwm dwm
+
+COPY ssh_config /etc/ssh
+COPY Xwrapper.config /etc/X11
 
 USER dwm
 

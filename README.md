@@ -9,13 +9,13 @@ container
 - [Why?](#why)
 - [How?](#how)
 - [FAQ](#faq)
-  - [Doesn't exposing the host docker socket to a container opens a security vulnerability?](#doesnt-exposing-the-host-docker-socket-to-a-container-opens-a-security-vulnerability)
+  - [Doesn't exposing the host docker socket to a container opens a security vulnerability?](#doesnt-exposing-the-host-docker-socket-to-the-ssh-container-opens-a-security-vulnerability)
 - [Known bugs](#known-bugs)
 - [Roadmap](#roadmap)
 
 ### What?
 
-This is a on-going experiment that tries to create a totally modular development
+This is a on-going experiment that tries to create a totally modular Linux
 environment using only Docker containers
 
 ### Why?
@@ -30,33 +30,35 @@ that you use
 > The instructions below assume that you already have both `docker` and `make`
 installed on your machine
 
-To get started, build the `fish` image with the command below:
+To get started, build the essential images with the command below:
 
 ```shell
-make build-fish
+make make-build-ssh build-dwm build-st build-fish
 ```
 
 > Optionally, you can also build the container image for tools that you would
 like to use inside the container
 
-Then, start it's container by running:
+Then, we need to start both the SSH server that will be responsible for
+launching the Docker containers securely, and also the `dwm` that will be our
+window manager:
 
 ```shell
-make run-fish
+make run-ssh run-dwm
 ```
 
 Now you can use all the other tools available inside the container
 
 ### FAQ
 
-#### Doesn't exposing the host docker socket to a container opens a security vulnerability
+#### Doesn't exposing the host Docker socket to the SSH container opens a security vulnerability
 
-Yes, but the sibling containers will run with a non-root user, hence, they won't
-have permission to interact with the host Docker daemon
+Indeed, but by default, the shell of the `client` user on the SSH server is
+forced execute a script that intercepts **ALL** commands and translates them
+into `docker run` instructions
 
-Even though the main container (fish) has such permission, everything is
-meant to be executed through unprivilleged containers, making such exploit
-uneffective
+This means that even if a malicious user/script could connect to the SSH server,
+it wouldn't be able to do literally anything besides running containers
 
 ### Known bugs
 

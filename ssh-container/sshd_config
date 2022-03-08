@@ -1,0 +1,3 @@
+X11Forwarding yes
+X11UseLocalhost no
+ForceCommand container_runner
